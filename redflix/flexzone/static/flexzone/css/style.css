@@ -1,0 +1,28 @@
+body {
+    background-color: #c7adad;
+    color: #221616;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 100px calc(100vh - 50px) 50px;
+    grid-template-areas: 
+        "header"
+        "content"
+        "footer"
+    ;
+    font-family: 'Roboto';
+}
+
+a {
+    color: aqua;
+    text-decoration: none;
+    background-color: #fff3;
+    border-bottom: 1px solid #09c;
+}
+
+header {
+    grid-area: header;
+    background-color: #123;
+    border-bottom: 2px solid #346;
+}
