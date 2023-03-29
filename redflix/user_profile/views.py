@@ -1,6 +1,7 @@
 from django.contrib import messages
 from django.contrib.auth import get_user_model, login, authenticate
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import Group
 from django.shortcuts import render, redirect
 from django.views.decorators.csrf import csrf_protect
 from django.urls import reverse_lazy
@@ -43,8 +44,8 @@ def register(request):
             messages.success(request, f"Welcome {username}! You have signed up successfully! Please choose the subscription pack for youself.")
             user = authenticate(request, username=username, password=password1)
             login(request, user)
-            return redirect(reverse_lazy('login'))
+            return redirect(reverse_lazy('shop'))
     return render(request, 'user_profile/register.html')
 
-# @login_required
-# def 
+def shop(request): 
+    return(request, 'user_profile/shop.html')

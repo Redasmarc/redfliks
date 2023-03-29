@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from embed_video.fields import EmbedVideoField
 import uuid
 
 
@@ -49,18 +50,20 @@ class Actor(models.Model):
     class Meta:
         ordering = ['actor_f_name', 'actor_l_name']
 
+
 class Movie(models.Model):
     image = models.ImageField(_('thumbnail'), upload_to='flexzone/thumbnails/', null=True, blank=True)
     title = models.CharField(_('movie name'), max_length=100, db_index=True)
     description = models.TextField(_('description'))
     trailer = models.URLField(null=True, blank=True)
+    video = EmbedVideoField(_('video url'), null=True)
     SUB_GROUP = (
         ('-', _('---------')),
         ('n', _('Nitflex')),
         ('h', _('HPO')),
-        ('d', _('Disnep+')),
+        ('d', _('Disnep')),
     )
-    status = models.CharField(_('group'), max_length=1, choices=SUB_GROUP, default='-')
+    group = models.CharField(_('group'), max_length=1, choices=SUB_GROUP, default='-')
     genres = models.ManyToManyField(
         Genre,
         verbose_name=_('Genres'),

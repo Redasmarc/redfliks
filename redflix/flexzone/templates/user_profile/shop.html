@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>Choose Subscriptions</h1>
+<form method="post">
+  {% csrf_token %}
+  <p>
+    <label for="choice_1">{{ 'Nitflex'|title }}</label>
+    <input type="checkbox" name="choice_1" {% if user_profile.choice_1 %}checked{% endif %}>
+  </p>
+  <p>
+    <label for="choice_2">{{ 'HPO'|title }}</label>
+    <input type="checkbox" name="choice_2" {% if user_profile.choice_2 %}checked{% endif %}>
+  </p>
+  <p>
+    <label for="choice_3">{{ 'Disnep'|title }}</label>
+    <input type="checkbox" name="choice_3" {% if user_profile.choice_3 %}checked{% endif %}>
+  </p>
+  <button type="submit">Save</button>
+</form>
+{% endblock content %}

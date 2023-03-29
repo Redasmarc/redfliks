@@ -4,7 +4,7 @@ body {
     margin: 0;
     padding: 0;
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 100%;
     grid-template-rows: 100px calc(100vh - 50px) 50px;
     grid-template-areas: 
         "header"
@@ -22,14 +22,154 @@ a {
 header {
     grid-area: header;
     height: 100px;
-    background-color: rgb(124, 16, 16);
+    background: linear-gradient(352deg, #820B0B 0%, #A50000 35%, #9E0404 78%, #820B0B 93%, #4E0000 100%);
     border-bottom: 2px solid #346;
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow: hidden;
 }
 main {
     grid-area: main;
+    overflow: auto;
+    width: 100%;
 }
 footer {
     grid-area: footer;
+    width: 100%;
+    background-color: #123;
+    color: #fff799;
+    border-top: 2px solid #346;
+}
+header .container, main .container, footer .container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+main .container, footer.container {
+    padding: 0 16px;
+}
+header ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-inline-start: 0;
+    margin: 8px 0;
+    gap: 16px;
+    overflow-x: auto;
+}
+header ul li {
+    display: inline-block;
+}
+header ul li a {
+    padding: 8px 16px;
+    display: block;
+}
+
+.logo {
+    padding: 8px 16px;
+    display: block;
+}
+
+.paginator {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.paginator a {
+    border: 1px solid #345;
+    border-radius: 8px;
+    padding: 2px 4px;
+}
+
+.paginator .current {
+    padding: 2px 4px;
+    text-align: center;
+}
+
+.flex-grow-one {
+    flex-grow: 1;
+}
+
+form.search-form {
+    margin-bottom: 1rem;
+}
+
+.genres { 
+    display: flex; 
+    flex-direction: row; 
+    padding-inline-start: 0; 
+    gap: 16px;
+    flex-wrap: wrap;
+}
+.genres li { 
+    display: inline-block; 
+    padding: 0 8px; 
+    background-color: #ccf5; 
+    border: 1px solid #346; 
+    border-radius: 8px; 
+}
+li.genre_prefix { 
+    background-color: transparent; 
+    border: 0; 
+    padding: 0; 
+}
+.genres a {
+    background-color: transparent;
+}
+
+.genres .active {
+    color: #ccc;
+}
+
+table {
+    width: 100%;
+    min-width: 500px;
+    overflow-x: auto;
+}
+
+.overdue {
+    background-color: #f007;
+}
+
+table tbody tr:hover:not(.overdue) {
+    background-color: #fff5;
+}
+
+table tbody tr.overdue:hover {
+    background-color: #f009;
+}
+
+table td {
+    padding: 4px 8px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+form p {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-x: auto;
+    justify-content: space-between;
+    gap: 16px;
+    width: 400px;
+    max-width: 100%;
+}
+
+form p input {
+    width: 50%;
+}
+
+form p small {
+    text-align: center;
+    width: 100%;
+    border-bottom: 1px solid #345;
 }
 
 .alert {

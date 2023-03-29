@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block style %}
+ul.movie_list { display: flex; flex-direction: row; flex-wrap: wrap; justify-content: flex-start; gap: 2rem; }
+ul.movie_list::after { content: ""; }
+ul.movie_list li { display: flex; flex-direction: column; flex-basis: 30%; }
+ul.movie_list h2 { font-size: 150%; height: 3.5em; padding: 0 16px; }
+ul.movie_list img { align-self: center; width: 100%; max-width: 200px }
+{% endblock style %}
+{% block content %}
+<h1>Movies</h1>
+<div>
+    {% if nitflex_movie_list %}
+    {% include 'flexzone/includes/paginator_fpnl.html' %}
+    <ul class='movie_list'>
+            {% for movie in nitflex_movie_list %}
+            
+            <li><a href={% url 'movie' movie.id %}>
+                    {% if movie.image %}
+                    <img src="{{ movie.image.url }}">
+                    {% else %}
+                    <img src="{% static 'flexzone/images/thumbnails/default.png' %}">
+                    {% endif %}
+
+            {% endfor %}
+        </ul>
+    {% include 'flexzone/includes/paginator_fpnl.html' %}
+    {% else %}
+        <p>No content</p>
+    {% endif %}</div>
+
+    {% endblock content%}

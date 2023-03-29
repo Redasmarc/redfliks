@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% block title %}{{ movie }}{% endblock title %}
+{% block content %}
+<h1>{{ movie }}</h1>
+<p>{{ movie.group }}</p>
+<h2>Movies</h2>
+{% if movie.count > 0 %}
+    <ul>
+        {% for movie in movie.group.all %}
+        <li>{{ movie.title }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+{% endblock content %}

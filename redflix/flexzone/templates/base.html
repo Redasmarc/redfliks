@@ -8,22 +8,27 @@
     <title>{% block title %}FlexZone{% endblock title %}</title>
     <link rel="stylesheet" href="{% static 'admin/css/fonts.css' %}">
     <link rel="stylesheet" href="{% static 'flexzone/css/style.css' %}">
+    <style>{% block style %}{% endblock style %}</style>
 </head>
 <body>
     <header>
         <span class='logo'>Flexzone</span>
+        <div class="container">
         <ul>
             <li><a href="{% url 'index' %}">Home</a></li>
+            <li><a href="{% url 'nitflex_movie_list' %}">Nitflex movies</a></li>
+            <li><a href="{% url 'hpo_movie_list' %}">HPO Movies</a></li>
+            <li><a href="{% url 'disnep_movie_list' %}">Disnep Movies</a></li>
             {% if request.user.is_authenticated %}
-            <span>{{ request.user }}</span>
+            <span>Signed as {{ request.user }}</span>
                 <li><a href="{% url 'logout' %}">Log out</a></li>
             {% else %}
                 <li><a href="{% url 'login' %}">Log in</a></li>
                 <li><a href="{% url 'register' %}">Sign up</a></li>
             {% endif %}
-        </ul>
+        </ul></div>
         </header>
-        <main>
+        <main><div class="container">
             {% block messages %}
             {% if messages %}
                 {% for message in messages %}
@@ -31,7 +36,7 @@
                 {% endfor %}
             {% endif %}
             {% endblock messages %}
-            {% block content %}{% endblock content %}</main>
-        <footer>&copy; {% now "Y" %}</footer>
+            {% block content %}{% endblock content %}</div></main>
+        <footer><div class="container"><p>&copy; {% now "Y" %}</p></div></footer>
 </body>
 </html>
